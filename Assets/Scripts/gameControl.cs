@@ -2,9 +2,9 @@
 using UnityEngine.UI;
 using System.Collections;
 
-public class gameControl : MonoBehaviour {
+public class GameControl : MonoBehaviour {
 
-	public Renderer playerRend;
+	public PlayerProperty ppInstance;
 
 	public Text endText;
 
@@ -14,7 +14,7 @@ public class gameControl : MonoBehaviour {
 		Renderer spnRend = this.GetComponent<Renderer> ();
 
 		if (player.gameObject.tag == "Player") {
-			if (playerRend.material.color != spnRend.material.color)
+			if (ppInstance.player.rend.material.color != spnRend.material.color)
 				endText.text = "Game Over!";
 			else
 				Destroy (this.gameObject);

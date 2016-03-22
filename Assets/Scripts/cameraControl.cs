@@ -1,10 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class cameraControl : MonoBehaviour {
+public class CameraControl : MonoBehaviour {
 
 	private GameObject player;
-
 	private float dist;
 
 	void Start () {

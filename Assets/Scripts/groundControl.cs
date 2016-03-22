@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class groundControl : MonoBehaviour {
+public class GroundControl : MonoBehaviour {
 
 	private Rigidbody2D rb;
 	private float moveSpeed;
@@ -14,7 +14,7 @@ public class groundControl : MonoBehaviour {
 
 	void Update () {
 		
-		moveSpeed = GameObject.FindGameObjectWithTag ("Player").GetComponent<playerControl> ().moveSpeed;
+		moveSpeed = GameObject.FindGameObjectWithTag ("Player").GetComponent<PlayerControl> ().moveSpeed;
 
 		rb.velocity = new Vector2 (moveSpeed, rb.velocity.y);
 	}

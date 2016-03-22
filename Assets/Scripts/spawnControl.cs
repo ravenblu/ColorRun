@@ -1,36 +1,31 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class spawnControl : MonoBehaviour {
+public class SpawnControl : MonoBehaviour {
 
-	public Rigidbody2D spnPrefab;
-	public Renderer spnRend;
-	public Transform player;
-	public GameObject SPR;
+	public SpawnProperty spInstance;
+	public GameObject prefab;
 
 	public float spawnPointStart;
 	public float spawnPointEnd;
 
 	private GameObject spnInstance;
-	private Vector3 spawnPos;
 	private float spawnPoint;
-	private spawnProperty spr;
+	private Vector3 spawnPos;
 
 
 
 	void Awake () {
-		
-		spr = SPR.GetComponent<spawnProperty> ();
 
 		int totalweight = 0;
-		for (int i = 0; i < spr.sp.Length; i++)
-			totalweight += spr.sp [i].weight;
+		for (int i = 0; i < spInstance.spawn.Length; i++)
+			totalweight += spInstance.spawn [i].weight;
 
 		int rw = Random.Range(0, totalweight);
 		if (totalweight != 0)
 			ColorWeighted (rw);
 		else {
-			int r = Random.Range (0, spr.sp.Length);
+			int r = Random.Range (0, spInstance.spawn.Length);
 			ColorRandom (r);
 		}
 	}
@@ -38,9 +33,8 @@ public class spawnControl : MonoBehaviour {
 
 	void OnTriggerEnter2D (Collider2D playerColl) {
 		
-		if (playerColl.gameObject.tag == "Player") {
+		if (playerColl.gameObject.tag == "Player")
 			Spawn ();
-		}
 		Destroy (GameObject.FindWithTag("Trigger"));
 	}
 
@@ -49,22 +43,22 @@ public class spawnControl : MonoBehaviour {
 
 	void ColorWeighted (int weight) {
 		int index = 0;
-		for (int j = 0; j < spr.sp.Length; j++) {
-			index += spr.sp [j].weight;
+		for (int j = 0; j < spInstance.spawn.Length; j++) {
+			index += spInstance.spawn [j].weight;
 			if (weight < index) {
-				spnRend.material.color = spr.sp [j].color;
+				this.GetComponent<Renderer>().material.color = spInstance.spawn [j].color;
 				break;
 			}
 		}
 	}
-
+		
 	void ColorRandom (int r) {
-		spnRend.material.color = spr.sp [r].color;
+		this.GetComponent<Renderer>().material.color = spInstance.spawn [r].color;
 	}
 
 	void Spawn () {
 		spawnPoint = this.transform.position.x + Random.Range (Mathf.Abs (spawnPointStart), Mathf.Abs (spawnPointEnd));
 		spawnPos = new Vector3 (spawnPoint, this.transform.position.y, this.transform.position.z);
-		spnInstance = Instantiate (spnPrefab, spawnPos, this.transform.rotation) as GameObject;
+		spnInstance = Instantiate (prefab, spawnPos, this.transform.rotation) as GameObject;
 	}
 }

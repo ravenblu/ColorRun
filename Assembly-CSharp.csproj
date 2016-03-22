@@ -46,12 +46,13 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\ReadMe.cs" />
-     <Compile Include="Assets\Scripts\cameraControl.cs" />
-     <Compile Include="Assets\Scripts\gameControl.cs" />
-     <Compile Include="Assets\Scripts\groundControl.cs" />
-     <Compile Include="Assets\Scripts\playerControl.cs" />
-     <Compile Include="Assets\Scripts\spawnControl.cs" />
-     <Compile Include="Assets\Scripts\spawnProperty.cs" />
+     <Compile Include="Assets\Scripts\CameraControl.cs" />
+     <Compile Include="Assets\Scripts\GameControl.cs" />
+     <Compile Include="Assets\Scripts\GroundControl.cs" />
+     <Compile Include="Assets\Scripts\PlayerControl.cs" />
+     <Compile Include="Assets\Scripts\PlayerProperty.cs" />
+     <Compile Include="Assets\Scripts\SpawnControl.cs" />
+     <Compile Include="Assets\Scripts\SpawnProperty.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>E:/Unity3d/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
